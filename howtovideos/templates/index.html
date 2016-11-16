@@ -1,0 +1,48 @@
+{% extends "_layouts/cp" %}
+
+{% includeCssResource "howToVideos/css/how-to-videos.css" %}
+
+{% set howToVideos = craft.howToVideos.getWistiaHowToVideos %}
+
+{% set title = "How To Videos"|t %}
+
+{% set content %}
+
+    <section id="how-to-videos-section">
+
+        {% if howToVideos is not empty %}
+
+            {% for sectionTitle, videos in howToVideos %}
+
+                <h2>{{ sectionTitle }}</h2>
+
+                <ul id="how-to-videos">
+
+                    {% for video in videos %}
+
+                        <li class="video">
+
+                            <div class="embed">
+                                {% autoescape %}{{ video.embedCode|raw }}{% endautoescape %}
+                            </div>
+
+                            <h3>{{ video.name }}</h3>
+
+                        </li>
+
+                    {% endfor %}
+
+                </ul>
+
+            {% endfor %}
+
+
+        {% else %}
+
+            <p>No Training Videos Found.</p>
+
+        {% endif %}
+
+    </section>
+
+{% endset %}
