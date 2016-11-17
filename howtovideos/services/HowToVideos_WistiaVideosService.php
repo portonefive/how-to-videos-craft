@@ -15,7 +15,7 @@ class HowToVideos_WistiaVideosService extends BaseApplicationComponent
 
         $client = new Client();
 
-        $url = 'https://api.wistia.com/v1/medias.json/?api_password=' . $wistiaApiKey . '&project_id=' . $wistiaProjectId;
+        $url = 'https://api.wistia.com/v1/projects/' . $wistiaProjectId . '.json?api_password=' . $wistiaApiKey;
 
         try {
             /** @var Request $response */
@@ -25,8 +25,14 @@ class HowToVideos_WistiaVideosService extends BaseApplicationComponent
 
             $videos = [];
 
-            foreach($response as $video) {
-                $videos[$video['section']][] = $video;
+            foreach ($response['medias'] as $video) {
+
+                if (isset($video['section'])) {
+                    $videos[$video['section']][] = $video;
+
+                } else {
+                    $videos['Misc'][] = $video;
+                }
             }
 
             return $videos;

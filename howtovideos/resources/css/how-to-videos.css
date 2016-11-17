@@ -7,41 +7,16 @@
     padding-bottom: 5px;
 }
 
-
 #how-to-videos {
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
     margin-left: -15px;
     margin-right: -15px;
 }
 
 #how-to-videos .video {
-    flex: 1 0 25%;
+    flex: 0 0 25%;
     padding: 15px;
     box-sizing: border-box;
     list-style: none;
-}
-
-#how-to-videos .video .embed {
-    position: relative;
-}
-
-#how-to-videos .video .embed::before {
-    content: '';
-    display: block;
-    padding-top: 56.25%;
-}
-
-#how-to-videos .video object {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-#how-to-videos .video object embed {
-    height: 100%;
-    width: 100%;
 }
